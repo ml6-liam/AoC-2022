@@ -2,7 +2,7 @@ from typing import List
 
 def parse_file_lines(path: str) -> List:
     with open(path) as f:
-        lines = [line for line in f]
+        lines = [line.rstrip() for line in f]
     return lines
 
 def top_three(input_list: list):
