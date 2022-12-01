@@ -1,5 +1,6 @@
 from src.elf_functions import hungry_elves
 from src.utils import top_three, parse_file_lines
+from src.elf import Elf
 
 def test_hungry_elves():
     assert hungry_elves("./test/test_data/test_elf_calories.txt") == [6000, 4000, 11000, 24000, 10000]
@@ -15,3 +16,9 @@ def test_top_three():
 def test_parse_file_lines():
     lines = parse_file_lines("./test/test_data/test_lines.txt")
     assert lines == ['a','b','c','d']
+
+def test_elf():
+    test_elf = Elf()
+    assert test_elf.carry_cals == 0
+    test_elf.count_calories(1)
+    assert test_elf.carry_cals == 1
