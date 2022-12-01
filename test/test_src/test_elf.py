@@ -1,4 +1,4 @@
-from elf import Elf
+from src.elf import Elf
 
 def test_elf():
     test_elf = Elf()
