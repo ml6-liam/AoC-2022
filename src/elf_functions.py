@@ -1,5 +1,5 @@
-from src.utils import parse_file_lines
-from src.elf import Elf
+from utils import parse_file_lines
+from elf import Elf
 
 def hungry_elves(data_path: str):
     cal_vals = parse_file_lines(data_path)
