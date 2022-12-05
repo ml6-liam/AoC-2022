@@ -3,6 +3,8 @@ from elf import Elf
 from elf_functions import hungry_elves
 from rock_paper_scissors import Strategy
 from rucksacks import Rucksack, RucksackGroup, make_groups
+from assignments import AssignmentPair
+from stacks import CrateStacks, Stack
 
 def day_1():
     prd_path = "../data/elf_calories.txt"
@@ -35,6 +37,18 @@ def day_3():
         badge_prio_total += group.badge_prio
     return prio_total, badge_prio_total
 
+def day_4():
+    assignment_strings = parse_file_lines('./data/assignments.txt')
+    contains_count = 0
+    overlap_count = 0
+    for assignment_pair in assignment_strings:
+        pair = AssignmentPair(assignment_pair)
+        if pair.inclusive_pair():
+            contains_count += 1
+        if pair.overlap() or pair.inclusive_pair():
+            overlap_count += 1
+    return contains_count, overlap_count
+
 def all_days():
     d1result = day_1()
     print(f"Day 1 result is {d1result}")
@@ -42,7 +56,10 @@ def all_days():
     print(f"Day 2 result is {d2result}")
     d3result = day_3()
     print(f"Day 3 result is {d3result}")
+    d4result = day_4()
+    print(f"Day 4 result is {d4result}")
 
 if __name__ == '__main__':
-    d3result = day_3()
-    print(f"Day 3 result is {d3result}")
+    lines = parse_file_lines('./data/crate_instructions.txt')
+    crate_stack = CrateStacks(lines)
+    crate_stack.show_stacks()
