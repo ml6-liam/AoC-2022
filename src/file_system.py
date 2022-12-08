@@ -88,16 +88,16 @@ class FileTreeParser():
                 self.cwd = self.cd(name)
 
     def ls(self):
-            while (len(self.commands_buffer)>0) and (self.commands_buffer[0][0] != '$'):
-                command = self.commands_buffer.pop(0)
-                desc, name = re.split(' ', command)
-                in_cwd = (name in self.cwd.contents)
-                if desc == "dir":
-                    if not in_cwd:
-                        self.cwd.add_sub_dir(name)
-                else:
-                    if not in_cwd:
-                        self.cwd.add_file(name, int(desc))
+        while (len(self.commands_buffer)>0) and (self.commands_buffer[0][0] != '$'):
+            command = self.commands_buffer.pop(0)
+            desc, name = re.split(' ', command)
+            in_cwd = (name in self.cwd.contents)
+            if desc == "dir":
+                if not in_cwd:
+                    self.cwd.add_sub_dir(name)
+            else:
+                if not in_cwd:
+                    self.cwd.add_file(name, int(desc))
 
     def cd(self, name):
         if name == "..":
@@ -148,7 +148,6 @@ class FileTreeParser():
         if req_space <= 0:
             print(f"enough space for update - no del required")
             return
-        
         candidates = self.list_dirs_over_threshold(req_space, None)
         print(f"found {len(candidates)} possible directories")
         smallest = candidates.pop(0)

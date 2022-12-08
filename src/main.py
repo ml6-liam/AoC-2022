@@ -63,5 +63,24 @@ def all_days():
 if __name__ == '__main__':
     lines = parse_file_lines('./src/test/test_data/test_fs_cmds.txt')
     parser = FileTreeParser()
+    print(f"##### NEW PARSER CREATED #####")
     parser.load_commands(lines)
+    print(f"##### COMMANDS LOADED PRINTING EMPTY TREE #####")
     parser.print_tree()
+    print(f'##### PARSING {len(parser.commands)} COMMANDS TO GENERATE TREE ####')
+    parser.run_commands()
+
+
+
+class Human:
+    name:str
+    parent:object
+    children:dict
+    def __init__(self, name, parent):
+        self.name=name
+        self.parent=parent
+        self.children={}
+    def make_child(self, name):
+        child = Human(name, self)
+        self.children[name] = child
+        return child
