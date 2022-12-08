@@ -7,9 +7,10 @@ class Stack():
         self.pos = pos
         self.crates=[]
 
-    def add_multiple_crates(self, input_crates:list):
-        add_ordered = input_crates.reverse()
-        for i,v in enumerate(add_ordered):
+    def add_multiple_crates(self, input_crates:list, rev:bool):
+        if rev:
+            input_crates.reverse()
+        for i,v in enumerate(input_crates):
             self.add_crate_to_top(v)
     
     def add_crate_to_top(self, val):
@@ -37,7 +38,6 @@ class CrateStacks():
         stacks_row = cs[len(cs)-1]
         crate_rows = cs[:len(cs)-1]
         self.stacks = self.parse_stacks(stacks_row)
-        self.show_stacks()
         self.parse_crates(crate_rows)
         self.parsed_instructions = self.parse_instructions(self.crate_instructions)
         for i, v in enumerate(self.parsed_instructions):
@@ -92,6 +92,4 @@ class CrateStacks():
         fstack = self.stacks[f-1]
         tstack = self.stacks[t-1]
         move_crates = fstack.get_top_n(n)
-        move_crates.reverse()
-        for i,v in enumerate(move_crates):
-            tstack.add_crate_to_top(v)
+        tstack.add_multiple_crates(move_crates, rev=False)

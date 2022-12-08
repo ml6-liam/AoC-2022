@@ -5,6 +5,7 @@ from rock_paper_scissors import Strategy
 from rucksacks import Rucksack, RucksackGroup, make_groups
 from assignments import AssignmentPair
 from stacks import CrateStacks, Stack
+from file_system import FileTreeParser
 
 def day_1():
     prd_path = "../data/elf_calories.txt"
@@ -60,6 +61,7 @@ def all_days():
     print(f"Day 4 result is {d4result}")
 
 if __name__ == '__main__':
-    lines = parse_file_lines('./data/crate_instructions.txt')
-    crate_stack = CrateStacks(lines)
-    crate_stack.show_stacks()
+    lines = parse_file_lines('./src/test/test_data/test_fs_cmds.txt')
+    parser = FileTreeParser()
+    parser.load_commands(lines)
+    parser.print_tree()
