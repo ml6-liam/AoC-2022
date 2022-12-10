@@ -1,6 +1,5 @@
 import re
 
-
 class Strategy:
     score = 0
     v2_score = 0

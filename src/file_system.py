@@ -7,7 +7,6 @@ class FsObject():
     size: int
 
 class File(FsObject):
-    
     def __init__(self, name: str, size: int, parent: object):
         self.name = name
         self.size = size

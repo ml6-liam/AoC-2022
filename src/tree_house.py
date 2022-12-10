@@ -1,5 +1,4 @@
 import re
-import time
 from utils import parse_file_lines
 
 class Tree():
@@ -14,7 +13,6 @@ class Tree():
         self.coordinates = coordinates
         self.parent = parent
         self.scenic_score = 0
-
 
 class Forrest():
     trees: list
