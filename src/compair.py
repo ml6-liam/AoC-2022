@@ -1,4 +1,5 @@
 from utils import parse_file_lines
+import time
 
 def compair(left, right, level='-'):
     if type(left) == str:
@@ -106,7 +107,9 @@ def part_2(input):
 
 if __name__=='__main__':
     input = parse_file_lines('./data/pairs.txt')
+    start = time.time()
     print(f'####### Part 1 #######')
     part_1(input)
     print('####### Part 2 #######')
     part_2(input)
+    print(f'Processing took {time.time()-start} seconds')
